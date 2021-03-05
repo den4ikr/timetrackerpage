@@ -13,7 +13,11 @@ const List = (props) => {
 
     const [query, setQuery] = useState ("")
     const createNote = () => {
-        props.addNote (Date.now (), query, "00:00:00", 0)
+        if (query.length === 0) {
+            props.addNote (Date.now (), Date.now (), "00:00:00", 0)
+        } else {
+            props.addNote (Date.now (), query, "00:00:00", 0)
+        }
         setQuery ("")
     }
     const onChangeHandler = (e) => {
