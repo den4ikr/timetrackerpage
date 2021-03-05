@@ -1,9 +1,9 @@
-import { ADD_NOTE, REMOVE_NOTE, SET_NOTES, UPDATE_TIME, SET_COUNTER } from "../../constants";
+import { ADD_NOTE, REMOVE_NOTE, SET_NOTES, UPDATE_TIME } from "../../constants";
 
 const initialState = {
   notes: [
-    { id: 1, text: "Note 1", time: "00:00:00", counter: 0},
-    { id: 2, text: "Note 2", time: "00:00:00", counter: 0, },
+    { id: 1, text: "Note 1", time: "00:00:00", counter: 0 },
+    { id: 2, text: "Note 2", time: "00:00:00", counter: 0 },
   ],
 };
 
@@ -14,7 +14,7 @@ export const MainReducer = (state = initialState, action) => {
     case ADD_NOTE: {
       return {
         ...state,
-        notes: [ action.payload, ...state.notes],
+        notes: [action.payload, ...state.notes],
       };
     }
     case REMOVE_NOTE:
@@ -30,19 +30,7 @@ export const MainReducer = (state = initialState, action) => {
           }
 
           return Object.assign({}, note, {
-            time: action.time
-          });
-        }),
-      });
-    case SET_COUNTER:
-      return Object.assign({}, state, {
-        notes: state.notes.map((note) => {
-          if (note.id !== action.id) {
-            return note;
-          }
-
-          return Object.assign({}, note, {
-            counter: note.counter = note.counter + 1
+            time: action.time,
           });
         }),
       });
