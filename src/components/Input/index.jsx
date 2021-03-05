@@ -6,7 +6,7 @@ export const InputComponent = (props) => {
 
     return (
         <div className={style.inputBlock} >
-            <Input onKeyPress = {props.createNote} onChange = {props.onChange} fullWidth placeholder = {props.placeholder} value = {props.value} />
+            <Input onChange = {props.onChange} fullWidth placeholder = {props.placeholder} value = {props.value} />
         </div>
     )
 }

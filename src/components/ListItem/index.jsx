@@ -9,6 +9,7 @@ import moment from "moment"
 export const ListItem = (props) => {
 
     const [showPause, setShowPause] = useState (false)
+    const [started, setStarted] = useState (true)
     const style = useStyles ()
     const deleteNote = () => {
         props.removeNote (props.id)
@@ -21,24 +22,29 @@ export const ListItem = (props) => {
     var intervalId = useRef (null);
     function startTimer()
     {
-        var startTimestamp = moment().startOf ("day")
+        let stateSeconds = props.time.slice(-2)
+        let stateMinutes = props.time.substring (3,5)
+        let stateHours = props.time.substring (0,2)
+        var startTimestamp = moment().hours(stateHours).minutes(stateMinutes).seconds(stateSeconds);
         intervalId.current = setInterval(function() {
             startTimestamp.add(1, 'second');
             props.updateTime (props.id, startTimestamp.format('HH:mm:ss'))
         }, 1000);
         setShowPause (true)
+        setStarted (true)
     }
 
     function stopTimer () {
         clearInterval (intervalId.current)
         setShowPause (false)
+        setStarted (false)
     }
     
     return (
-        <Card className={style.card} >
+        <Card className={style.card} style = {{ backgroundColor: started ? "#FDFDF6" : "#fff" }} >
             <CardContent>
                 <div className={style.mainRow} >
-                    <Typography>
+                    <Typography style = {{ color: started ? "#3FAF6C" : "#000" }} >
                         {props.text}
                     </Typography>
                     <div className={style.subRow} >

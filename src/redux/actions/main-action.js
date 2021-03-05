@@ -5,10 +5,12 @@ export const setNotes = (notes) => ({
     notes,
 })
 
-export const addNote = (id, text, time, counter) => ({
-    type: ADD_NOTE,
-    payload: {id, text, time, counter}
-})
+export const addNote = (id, text, time) => {
+    return {
+        type: ADD_NOTE,
+    payload: {id, text, time}
+    }
+}
 
 export const removeNote = (id) => ({
     type: REMOVE_NOTE,
