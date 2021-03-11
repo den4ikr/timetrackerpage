@@ -8,7 +8,7 @@ function App() {
     <div>
       <Header />
       <div className="container">
-        <Route path="timetarckerpage" render = {() => <List  />} />
+        <Route path="timetrackerpage" render = {() => <List  />} />
       </div>
     </div>
   );
