@@ -1,3 +1,4 @@
+import { Route } from "react-router";
 import "./App.css";
 import { Header } from "./components/Header";
 import List from "./components/List";
@@ -7,7 +8,7 @@ function App() {
     <div>
       <Header />
       <div className="container">
-        <List />
+        <Route path="timetarckerpage" render = {() => <List  />} />
       </div>
     </div>
   );
